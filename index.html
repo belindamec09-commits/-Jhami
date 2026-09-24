@@ -183,87 +183,35 @@
       border: 1px solid rgba(255,255,255,0.15);
     }
 
-    /* 6. GALAXIA HOT WHEELS */
-    #galaxia {
-      background: radial-gradient(circle at 50% 50%, #172d69, #050514 55%, #010106);
-    }
+   <!-- GALAXIA HOT WHEELS -->
+  <section id="galaxia">
+    <div class="contenido">
+      <h2>Nuestra galaxia</h2>
 
-    .galaxia {
-      position: relative;
-      width: 100%;
-      max-width: 900px;
-      height: 350px;
-      margin: 30px auto;
-    }
+      <p>
+        Ahora sí...<br>
+        llegamos a la parte que tiene un poquito de ti.
+      </p>
 
-    .planeta {
-      position: absolute;
-      border-radius: 50%;
-      background: radial-gradient(circle at 30% 30%, #ffffff, #695cff 30%, #17145e 75%);
-      box-shadow: 0 0 35px #6f66ff;
-    }
+      <div class="galaxia">
+        <div class="planeta planeta1"></div>
+        <div class="planeta planeta2"></div>
+        <div class="planeta planeta3"></div>
+        <div class="pista"></div>
+        <div class="carrito">🏎️</div>
+      </div>
 
-    .planeta1 {
-      width: 90px;
-      height: 90px;
-      left: 5%;
-      top: 20%;
-    }
+      <p class="mensaje-galaxia">
+        “Entre tantos caminos posibles,<br>
+        nuestros caminos terminaron encontrándose.”
+      </p>
 
-    .planeta2 {
-      right: 8%;
-      top: 55%;
-      width: 65px;
-      height: 65px;
-    }
-
-    .planeta3 {
-      left: 45%;
-      top: 5%;
-      width: 55px;
-      height: 55px;
-    }
-
-    .pista {
-      position: absolute;
-      left: 5%;
-      right: 5%;
-      top: 55%;
-      height: 12px;
-      background: linear-gradient(90deg, #ff5b18, #ffb21c, #ff5b18);
-      border-radius: 20px;
-      transform: rotate(-7deg);
-      box-shadow: 0 0 20px #ff641c;
-    }
-
-    .carrito {
-      position: absolute;
-      top: 45%;
-      left: 5%;
-      font-size: 55px;
-      animation: conducir 7s linear infinite;
-      filter: drop-shadow(0 0 12px #ff6b22);
-    }
-
-    @keyframes conducir {
-      0% {
-        left: 5%;
-        transform: rotate(0deg);
-      }
-      45% {
-        left: 45%;
-        transform: rotate(2deg);
-      }
-      100% {
-        left: 88%;
-        transform: rotate(0deg);
-      }
-    }
-
-    .mensaje-galaxia {
-      margin-top: 20px;
-      font-size: 1.3rem;
-    }
+      <br>
+      <button onclick="irA('fotos')">
+        Ver nuestros recuerdos →
+      </button>
+    </div>
+  </section>
 
     /* 7. FOTOS - SECCIÓN OPTIMIZADA */
     #fotos {
