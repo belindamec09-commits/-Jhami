@@ -279,14 +279,26 @@
     }
 
     .foto {
-      height: 220px;
-      border-radius: 15px;
-      border: 1px dashed rgba(255,255,255,0.5);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: rgba(255,255,255,0.05);
-      color: #aaa;
+  height: 320px;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 2px solid rgba(255,255,255,0.25);
+  background: rgba(255,255,255,0.05);
+  box-shadow: 0 10px 35px rgba(0,0,0,0.4);
+  transition: 0.4s;
+}
+
+.foto:hover {
+  transform: scale(1.03);
+  box-shadow: 0 15px 45px rgba(255,255,255,0.15);
+}
+
+.foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
     }
 
     /* 8. SORPRESA */
@@ -556,25 +568,17 @@
         y algunos de esos momentos que quiero guardar.
       </p>
 
-      <div class="galeria">
+     <div class="galeria">
 
-        <div class="foto">
-          Foto 1
-        </div>
+  <div class="foto">
+    <img src="recuerdo1.jpg" alt="Nuestro recuerdo">
+  </div>
 
-        <div class="foto">
-          Foto 2
-        </div>
+  <div class="foto">
+    <img src="recuerdo2.jpg" alt="Nuestro recuerdo">
+  </div>
 
-        <div class="foto">
-          Foto 3
-        </div>
-
-        <div class="foto">
-          Foto 4
-        </div>
-
-      </div>
+</div>
 
       <br>
 
