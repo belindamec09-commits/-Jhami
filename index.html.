@@ -1,1 +1,664 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nuestro Universo</title>
 
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Georgia, serif;
+      background: #050514;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    section {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 40px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* ESTRELLAS */
+    section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(white 1px, transparent 1px),
+        radial-gradient(#ffffff 1px, transparent 1px);
+      background-size: 70px 70px, 120px 120px;
+      background-position: 10px 20px, 40px 70px;
+      opacity: 0.35;
+      pointer-events: none;
+    }
+
+    .contenido {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 8vw, 5rem);
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 6vw, 3.5rem);
+      margin-bottom: 25px;
+    }
+
+    p {
+      font-size: 1.15rem;
+      line-height: 1.8;
+      margin-bottom: 25px;
+    }
+
+    /* BOTONES */
+    button {
+      border: none;
+      padding: 14px 28px;
+      border-radius: 30px;
+      background: white;
+      color: #09091c;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+      font-weight: bold;
+    }
+
+    button:hover {
+      transform: scale(1.08);
+    }
+
+    /* 1. INICIO */
+    #inicio {
+      background:
+        radial-gradient(circle at center, #27245e 0%, #0a0925 45%, #020208 100%);
+    }
+
+    .subtitulo {
+      font-size: 1.1rem;
+      opacity: 0.8;
+      margin-bottom: 30px;
+    }
+
+    /* 2. MENSAJE */
+    #mensaje {
+      background:
+        radial-gradient(circle at 20% 20%, #39205e, transparent 35%),
+        radial-gradient(circle at 80% 80%, #172f61, transparent 35%),
+        #070719;
+    }
+
+    .frase {
+      font-size: clamp(1.5rem, 5vw, 2.5rem);
+      font-style: italic;
+      line-height: 1.6;
+    }
+
+    /* 3. HISTORIA */
+    #historia {
+      background:
+        linear-gradient(#050514cc, #050514cc),
+        radial-gradient(circle, #25134d, #050514);
+    }
+
+    .fecha {
+      margin: 30px auto;
+      padding: 25px;
+      max-width: 600px;
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 20px;
+      background: rgba(255,255,255,0.06);
+      backdrop-filter: blur(8px);
+    }
+
+    .fecha h3 {
+      font-size: 1.7rem;
+      margin-bottom: 12px;
+    }
+
+    /* 4. CARTA */
+    #carta {
+      background:
+        radial-gradient(circle at center, #39223b, #100814);
+    }
+
+    .carta {
+      background: #f7f0df;
+      color: #30252b;
+      padding: 35px;
+      border-radius: 10px;
+      max-width: 700px;
+      box-shadow: 0 15px 50px rgba(0,0,0,0.5);
+      text-align: left;
+    }
+
+    .carta h2 {
+      text-align: center;
+      color: #5c3045;
+    }
+
+    .carta p {
+      font-family: Georgia, serif;
+    }
+
+    /* 5. JUEGO */
+    #juego {
+      background:
+        radial-gradient(circle at center, #132b50, #030611);
+    }
+
+    .palabras {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin: 30px 0;
+    }
+
+    .palabra {
+      padding: 10px 16px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.1);
+    }
+
+    /* 6. GALAXIA HOT WHEELS */
+    #galaxia {
+      background:
+        radial-gradient(circle at 50% 50%, #172d69, #050514 55%, #010106);
+    }
+
+    .galaxia {
+      position: relative;
+      width: 100%;
+      max-width: 900px;
+      height: 400px;
+      margin: 30px auto;
+    }
+
+    .planeta {
+      position: absolute;
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #ffffff, #695cff 30%, #17145e 75%);
+      box-shadow: 0 0 35px #6f66ff;
+    }
+
+    .planeta1 {
+      left: 5%;
+      top: 20%;
+    }
+
+    .planeta2 {
+      right: 8%;
+      top: 55%;
+      width: 65px;
+      height: 65px;
+    }
+
+    .planeta3 {
+      left: 45%;
+      top: 5%;
+      width: 55px;
+      height: 55px;
+    }
+
+    .pista {
+      position: absolute;
+      left: 5%;
+      right: 5%;
+      top: 55%;
+      height: 12px;
+      background: linear-gradient(90deg, #ff5b18, #ffb21c, #ff5b18);
+      border-radius: 20px;
+      transform: rotate(-7deg);
+      box-shadow: 0 0 20px #ff641c;
+    }
+
+    .carrito {
+      position: absolute;
+      top: 45%;
+      left: 5%;
+      font-size: 55px;
+      animation: conducir 7s linear infinite;
+      filter: drop-shadow(0 0 12px #ff6b22);
+    }
+
+    @keyframes conducir {
+      0% {
+        left: 5%;
+        transform: rotate(0deg);
+      }
+
+      45% {
+        left: 45%;
+        transform: rotate(2deg);
+      }
+
+      100% {
+        left: 88%;
+        transform: rotate(0deg);
+      }
+    }
+
+    .mensaje-galaxia {
+      margin-top: 20px;
+      font-size: 1.3rem;
+    }
+
+    /* 7. FOTOS */
+    #fotos {
+      background:
+        radial-gradient(circle at center, #351d47, #070510);
+    }
+
+    .galeria {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 18px;
+      margin-top: 30px;
+    }
+
+    .foto {
+      height: 220px;
+      border-radius: 15px;
+      border: 1px dashed rgba(255,255,255,0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: rgba(255,255,255,0.05);
+      color: #aaa;
+    }
+
+    /* 8. SORPRESA */
+    #sorpresa {
+      background:
+        radial-gradient(circle at center, #402238, #09050c);
+    }
+
+    .caja {
+      font-size: 100px;
+      cursor: pointer;
+      transition: 0.4s;
+      margin: 30px;
+    }
+
+    .caja:hover {
+      transform: scale(1.1) rotate(3deg);
+    }
+
+    #sorpresaTexto {
+      display: none;
+      animation: aparecer 1s ease;
+    }
+
+    @keyframes aparecer {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* 9. FINAL */
+    #final {
+      background:
+        radial-gradient(circle at center, #211b50, #03030a);
+    }
+
+    .corazon {
+      font-size: 70px;
+      margin: 25px;
+      animation: latir 1.5s infinite;
+    }
+
+    @keyframes latir {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.15);
+      }
+    }
+
+    footer {
+      padding: 20px;
+      text-align: center;
+      background: #020207;
+      color: #777;
+      font-size: 0.8rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- INICIO -->
+  <section id="inicio">
+    <div class="contenido">
+      <h1>Nuestro Universo</h1>
+      <p class="subtitulo">
+        Esto no es exactamente lo que parece...
+      </p>
+      <p>
+        Preparé algo para ti.
+      </p>
+      <button onclick="irA('mensaje')">
+        Comenzar viaje
+      </button>
+    </div>
+  </section>
+
+  <!-- MENSAJE -->
+  <section id="mensaje">
+    <div class="contenido">
+      <p class="frase">
+        “Entre tantos caminos, personas y lugares,
+        qué bonito fue coincidir contigo.”
+      </p>
+
+      <button onclick="irA('historia')">
+        Seguir →
+      </button>
+    </div>
+  </section>
+
+  <!-- HISTORIA -->
+  <section id="historia">
+    <div class="contenido">
+
+      <h2>Donde comenzó nuestro universo</h2>
+
+      <p>
+        Todas las historias tienen un comienzo...
+        y la nuestra también.
+      </p>
+
+      <div class="fecha">
+        <h3>9 de abril de 2025</h3>
+
+        <p>
+          Fue el día en que comenzó todo.
+          Quizá en ese momento no imaginábamos
+          todo lo que vendría después, pero poco a poco
+          nuestras historias comenzaron a cruzarse.
+        </p>
+      </div>
+
+      <div class="fecha">
+        <h3>2 de abril de 2026</h3>
+
+        <p>
+          Una nueva etapa comenzó.
+          Lo que había empezado tiempo atrás
+          empezó a sentirse más serio y especial.
+        </p>
+      </div>
+
+      <button onclick="irA('carta')">
+        Continuar →
+      </button>
+
+    </div>
+  </section>
+
+  <!-- CARTA -->
+  <section id="carta">
+    <div class="contenido">
+
+      <div class="carta">
+
+        <h2>Una carta para ti</h2>
+
+        <p>
+          Quiero que sepas que hacer esto para ti
+          también es una forma de guardar nuestros
+          recuerdos en un pequeño lugar.
+        </p>
+
+        <p>
+          Hemos vivido momentos bonitos, momentos
+          complicados y también momentos que quizá
+          nunca imaginamos vivir.
+        </p>
+
+        <p>
+          Y aun así, me gusta pensar en todo lo que
+          hemos construido y en todas esas pequeñas
+          cosas que hacen que nuestra historia sea
+          solamente nuestra.
+        </p>
+
+        <p>
+          Gracias por formar parte de mi vida
+          y por todos los recuerdos que todavía
+          nos quedan por crear.
+        </p>
+
+        <p>
+          Con cariño,
+          <br>
+          <strong>Yo</strong>
+        </p>
+
+      </div>
+
+      <br>
+
+      <button onclick="irA('juego')">
+        Tengo un juego para ti →
+      </button>
+
+    </div>
+  </section>
+
+  <!-- JUEGO -->
+  <section id="juego">
+    <div class="contenido">
+
+      <h2>Una pequeña misión</h2>
+
+      <p>
+        Hay algunas palabras escondidas
+        que representan nuestra historia.
+      </p>
+
+      <div class="palabras">
+        <div class="palabra">AMOR</div>
+        <div class="palabra">RISAS</div>
+        <div class="palabra">RECUERDOS</div>
+        <div class="palabra">UNIVERSO</div>
+        <div class="palabra">JUNTOS</div>
+        <div class="palabra">F1</div>
+        <div class="palabra">BARÇA</div>
+      </div>
+
+      <p>
+        Esta es solo una versión inicial.
+        Después podemos convertir esto
+        en un pupiletras real.
+      </p>
+
+      <button onclick="irA('galaxia')">
+        Continuar →
+      </button>
+
+    </div>
+  </section>
+
+  <!-- GALAXIA HOT WHEELS -->
+  <section id="galaxia">
+    <div class="contenido">
+
+      <h2>Nuestra galaxia</h2>
+
+      <p>
+        Ahora sí...
+        llegamos a la parte que tiene un poquito de ti.
+      </p>
+
+      <div class="galaxia">
+
+        <div class="planeta planeta1"></div>
+        <div class="planeta planeta2"></div>
+        <div class="planeta planeta3"></div>
+
+        <div class="pista"></div>
+
+        <div class="carrito">
+          🏎️
+        </div>
+
+      </div>
+
+      <p class="mensaje-galaxia">
+        “Entre tantos caminos posibles,
+        nuestros caminos terminaron encontrándose.”
+      </p>
+
+      <button onclick="irA('fotos')">
+        Ver nuestros recuerdos →
+      </button>
+
+    </div>
+  </section>
+
+  <!-- FOTOS -->
+  <section id="fotos">
+    <div class="contenido">
+
+      <h2>Nuestros recuerdos</h2>
+
+      <p>
+        Aquí iremos colocando nuestras fotos
+        y algunos de esos momentos que quiero guardar.
+      </p>
+
+      <div class="galeria">
+
+        <div class="foto">
+          Foto 1
+        </div>
+
+        <div class="foto">
+          Foto 2
+        </div>
+
+        <div class="foto">
+          Foto 3
+        </div>
+
+        <div class="foto">
+          Foto 4
+        </div>
+
+      </div>
+
+      <br>
+
+      <button onclick="irA('sorpresa')">
+        Hay algo más... →
+      </button>
+
+    </div>
+  </section>
+
+  <!-- SORPRESA -->
+  <section id="sorpresa">
+    <div class="contenido">
+
+      <h2>Tengo una última cosa para ti...</h2>
+
+      <div class="caja" onclick="mostrarSorpresa()">
+        🎁
+      </div>
+
+      <div id="sorpresaTexto">
+
+        <p>
+          Si llegaste hasta aquí...
+        </p>
+
+        <p>
+          entonces supongo que ya descubriste
+          que esta página era mucho más que una simple página.
+        </p>
+
+        <button onclick="irA('final')">
+          Abrir el último mensaje ❤️
+        </button>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FINAL -->
+  <section id="final">
+    <div class="contenido">
+
+      <div class="corazon">
+        ❤️
+      </div>
+
+      <h1>Feliz Día del Novio</h1>
+
+      <p class="frase">
+        “De todos los caminos que existen,
+        qué bonito que el nuestro haya coincidido.”
+      </p>
+
+      <p>
+        Y esto recién es una pequeña parte
+        de nuestra historia.
+      </p>
+
+      <p>
+        Lo mejor todavía está por escribirse.
+      </p>
+
+    </div>
+  </section>
+
+  <footer>
+    Hecho especialmente para ti.
+  </footer>
+
+  <script>
+
+    function irA(id) {
+      document.getElementById(id).scrollIntoView({
+        behavior: "smooth"
+      });
+    }
+
+    function mostrarSorpresa() {
+      document.getElementById("sorpresaTexto").style.display = "block";
+    }
+
+  </script>
+
+</body>
+</html>
