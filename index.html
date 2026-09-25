@@ -380,34 +380,36 @@
       margin-top: 25px;
       font-size: 1.25rem;
     }
-<!-- FOTOS -->
-  <section id="fotos">
-    <div class="contenido">
-      <h2>Nuestros recuerdos</h2>
+.galeria {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-top: 30px;
+}
 
-      <p>
-        Aquí iremos colocando nuestras fotos
-        y algunos de esos momentos que quiero guardar.
-      </p>
+.foto {
+  background: rgba(255,255,255,0.08);
+  padding: 10px;
+  border-radius: 15px;
+  overflow: hidden;
+}
 
-      <div class="galeria">
-        <div class="foto">
-          <img src="WhatsApp%20Image%202026-09-24%20at%2017.49.40.jpeg" alt="Nuestro recuerdo 1">
-        </div>
+.foto img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 10px;
+}
 
-        <div class="foto">
-          <img src="WhatsApp%20Image%202026-09-24%20at%2017.49.40%20(1).jpeg" alt="Nuestro recuerdo 2">
-        </div>
-      </div>
+@media (max-width: 600px) {
+  .galeria {
+    grid-template-columns: 1fr;
+  }
 
-      <br><br>
-
-      <button onclick="irA('sorpresa')">
-        Hay algo más... →
-      </button>
-    </div>
-  </section>
-
+  .foto img {
+    height: 250px;
+  }
+}
     /* 8. SORPRESA */
     #sorpresa {
       background: radial-gradient(circle at center, #402238, #09050c);
