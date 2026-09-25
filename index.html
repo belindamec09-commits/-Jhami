@@ -381,40 +381,33 @@
       font-size: 1.25rem;
     }
 
-    /* 7. FOTOS */
-    #fotos {
-      background: radial-gradient(circle at center, #351d47, #070510);
-    }
+    <!-- FOTOS -->
+  <section id="fotos">
+    <div class="contenido">
+      <h2>Nuestros recuerdos</h2>
 
-    .galeria {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 25px;
-      margin-top: 30px;
-      padding: 0 10px;
-    }
+      <p>
+        Aquí iremos colocando nuestras fotos
+        y algunos de esos momentos que quiero guardar.
+      </p>
 
-    .foto {
-      height: 380px;
-      border-radius: 20px;
-      overflow: hidden;
-      border: 2px solid rgba(255,255,255,0.25);
-      background: rgba(255,255,255,0.05);
-      box-shadow: 0 10px 35px rgba(0,0,0,0.5);
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
-    }
+      <div class="galeria">
+        <div class="foto">
+          <img src="WhatsApp Image 2026-09-24 at 17.49.40.jpeg" alt="Nuestro recuerdo 1">
+        </div>
 
-    .foto:hover {
-      transform: translateY(-5px) scale(1.02);
-      box-shadow: 0 15px 45px rgba(255,255,255,0.2);
-    }
+        <div class="foto">
+          <img src="WhatsApp Image 2026-09-24 at 17.49.40 (1).jpeg" alt="Nuestro recuerdo 2">
+        </div>
+      </div>
 
-    .foto img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
+      <br><br>
+
+      <button onclick="irA('sorpresa')">
+        Hay algo más... →
+      </button>
+    </div>
+  </section>
 
     /* 8. SORPRESA */
     #sorpresa {
